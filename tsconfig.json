@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
-    "sourceMap": true,
+    "compileOnSave": true,    // PyCharm, can start node directly in run configuration
+    "sourceMap": true,        // PyCharm debug
+
     "incremental": true,
     "target": "es2017",
     "outDir": "build/main",
@@ -35,5 +37,4 @@
     "types": ["node", "jest"]
   },
   "include": ["src/index.ts"],
-  "compileOnSave": false
 }
