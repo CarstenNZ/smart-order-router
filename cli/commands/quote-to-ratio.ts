@@ -3,6 +3,7 @@ import { flags } from '@oclif/command';
 import { Currency, Ether, Fraction, Percent } from '@uniswap/sdk-core';
 import { Position } from '@uniswap/v3-sdk';
 import dotenv from 'dotenv';
+import { SwapType } from '../../src';
 import {
   ID_TO_CHAIN_ID,
   parseAmount,
@@ -118,6 +119,7 @@ export class QuoteToRatio extends BaseCommand {
           recipient: '0x0000000000000000000000000000000000000001',
         },
         swapOptions: {
+          type: SwapType.SWAP_ROUTER_02,
           deadline: 100,
           recipient,
           slippageTolerance: new Percent(5, 10_000),
@@ -160,7 +162,8 @@ export class QuoteToRatio extends BaseCommand {
         methodParameters,
         blockNumber,
         estimatedGasUsed,
-        gasPriceWei
+        gasPriceWei,
+        undefined
       );
       return;
     } else if (swapRoutes.status === SwapToRatioStatus.NO_ROUTE_FOUND) {
